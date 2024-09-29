@@ -64,7 +64,7 @@ const StudentAdmissonForm = () => {
       <StudentBankAccountInformation onDataChange={setBankInfo} />
       <DocumentUpload onDataChange={setDocumentUpload} />
       <Declaration onDataChange={setDeclaration} />
-      <div className='text-center'>
+      <div className='text-center mt-10 p-5'>
       <button type="submit">Submit Form</button>
       </div>
     

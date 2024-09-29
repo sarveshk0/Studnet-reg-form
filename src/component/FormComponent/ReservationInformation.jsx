@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from "react";
-import "./ReservationInformation.css";
+import React, { useState, useEffect } from "react";
 
-const ReservationInformation = ({onDataChange}) => {
+const ReservationInformation = ({ onDataChange }) => {
   const [formData, setFormData] = useState({
     religion: "",
     category: "",
@@ -17,8 +16,6 @@ const ReservationInformation = ({onDataChange}) => {
     mentalDisabilityPercentage: "",
   });
 
-
-  // Update parent component whenever formData changes
   useEffect(() => {
     onDataChange(formData);
   }, [formData, onDataChange]);
@@ -28,20 +25,19 @@ const ReservationInformation = ({onDataChange}) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  
-
   return (
-    <div className="reservation-info-container">
-      <h2>Reservation Information</h2>
-      <form  className="reservation-info-form">
+    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-bold mb-6">Reservation Information</h2>
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Religion */}
         <div className="form-group">
-          <label>Religion:</label>
+          <label className="block font-semibold mb-1">Religion:</label>
           <select
             name="religion"
             value={formData.religion}
             onChange={handleChange}
             required
+            className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
           >
             <option value="">Select Religion</option>
             <option value="hindu">Hindu</option>
@@ -56,12 +52,13 @@ const ReservationInformation = ({onDataChange}) => {
 
         {/* Category */}
         <div className="form-group">
-          <label>Category:</label>
+          <label className="block font-semibold mb-1">Category:</label>
           <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
+            className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
           >
             <option value="">Select Category</option>
             <option value="general">General</option>
@@ -73,50 +70,54 @@ const ReservationInformation = ({onDataChange}) => {
           </select>
         </div>
 
-        {/* Caste (if reserved category) */}
+        {/* Caste and Certificate Info (if reserved) */}
         {formData.category !== "general" && (
           <>
             <div className="form-group">
-              <label>Caste:</label>
+              <label className="block font-semibold mb-1">Caste:</label>
               <input
                 type="text"
                 name="caste"
                 value={formData.caste}
                 onChange={handleChange}
                 placeholder="Enter Caste"
-                required={formData.category !== "general"}
+                required
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
 
             <div className="form-group">
-              <label>Certificate Number:</label>
+              <label className="block font-semibold mb-1">Certificate Number:</label>
               <input
                 type="text"
                 name="reservedCertNo"
                 value={formData.reservedCertNo}
                 onChange={handleChange}
                 placeholder="Enter Certificate No."
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
 
             <div className="form-group">
-              <label>Issuing Authority:</label>
+              <label className="block font-semibold mb-1">Issuing Authority:</label>
               <input
                 type="text"
                 name="issuingAuthority"
                 value={formData.issuingAuthority}
                 onChange={handleChange}
                 placeholder="Enter Issuing Authority"
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
 
             <div className="form-group">
-              <label>Issue Date:</label>
+              <label className="block font-semibold mb-1">Issue Date:</label>
               <input
                 type="date"
                 name="issueDate"
                 value={formData.issueDate}
                 onChange={handleChange}
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
           </>
@@ -124,11 +125,12 @@ const ReservationInformation = ({onDataChange}) => {
 
         {/* Physically Handicapped */}
         <div className="form-group">
-          <label>Physically Handicapped:</label>
+          <label className="block font-semibold mb-1">Physically Handicapped:</label>
           <select
             name="isPhysicallyHandicapped"
             value={formData.isPhysicallyHandicapped}
             onChange={handleChange}
+            className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
           >
             <option value="no">No</option>
             <option value="yes">Yes</option>
@@ -139,32 +141,32 @@ const ReservationInformation = ({onDataChange}) => {
         {formData.isPhysicallyHandicapped === "yes" && (
           <>
             <div className="form-group">
-              <label>Disability Type:</label>
+              <label className="block font-semibold mb-1">Disability Type:</label>
               <select
                 name="physicalDisabilityType"
                 value={formData.physicalDisabilityType}
                 onChange={handleChange}
                 required
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               >
                 <option value="">Select Disability Type</option>
                 <option value="blindness">Blindness</option>
                 <option value="low_vision">Low Vision</option>
                 <option value="hearing_disability">Hearing Disability</option>
                 <option value="speech_disability">Speech Disability</option>
-                <option value="loco_motor_disability">
-                  Loco Motor Disability
-                </option>
+                <option value="loco_motor_disability">Loco Motor Disability</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Percentage:</label>
+              <label className="block font-semibold mb-1">Percentage:</label>
               <input
                 type="text"
                 name="physicalDisabilityPercentage"
                 value={formData.physicalDisabilityPercentage}
                 onChange={handleChange}
                 placeholder="Enter Percentage"
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
           </>
@@ -172,50 +174,51 @@ const ReservationInformation = ({onDataChange}) => {
 
         {/* Mentally Challenged */}
         <div className="form-group">
-          <label>Mentally Challenged:</label>
+          <label className="block font-semibold mb-1">Mentally Challenged:</label>
           <select
             name="isMentallyChallenged"
             value={formData.isMentallyChallenged}
             onChange={handleChange}
+            className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
           >
             <option value="no">No</option>
             <option value="yes">Yes</option>
           </select>
         </div>
 
-        {/* Mental Challenge Details (if yes) */}
+        {/* Mental Disability Details (if yes) */}
         {formData.isMentallyChallenged === "yes" && (
           <>
             <div className="form-group">
-              <label>Mental Disability Type:</label>
+              <label className="block font-semibold mb-1">Mental Disability Type:</label>
               <select
                 name="mentalDisabilityType"
                 value={formData.mentalDisabilityType}
                 onChange={handleChange}
                 required
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               >
                 <option value="">Select Mental Disability Type</option>
                 <option value="mental_retardation">Mental Retardation</option>
                 <option value="learning_disability">Learning Disability</option>
                 <option value="cerebral_palsy">Cerebral Palsy</option>
-                <option value="austin">Austin</option>
+                <option value="autism">Autism</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Percentage:</label>
+              <label className="block font-semibold mb-1">Percentage:</label>
               <input
                 type="text"
                 name="mentalDisabilityPercentage"
                 value={formData.mentalDisabilityPercentage}
                 onChange={handleChange}
                 placeholder="Enter Percentage"
+                className="w-full p-2 border rounded-md focus:ring focus:ring-blue-200 focus:border-blue-500"
               />
             </div>
           </>
         )}
-
-       
       </form>
     </div>
   );
