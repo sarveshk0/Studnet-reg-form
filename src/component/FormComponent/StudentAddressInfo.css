@@ -1,0 +1,29 @@
+.address-info-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    
+  }
+
+ 
+
+  
+  .address-info-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Two columns layout */
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-weight: bold
+  }  
